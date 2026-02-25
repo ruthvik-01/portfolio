@@ -32,7 +32,7 @@ export default function Hero() {
             className="font-bold tracking-tighter leading-[0.85]"
             style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           >
-            AI/ML
+            I BUILD
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
@@ -41,7 +41,7 @@ export default function Hero() {
             className="font-bold tracking-tighter leading-[0.85] text-outline"
             style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           >
-            ENGI
+            THINGS THAT
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
@@ -50,7 +50,7 @@ export default function Hero() {
             className="font-bold tracking-tighter leading-[0.85] gradient-text"
             style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           >
-            NEER
+            THINK.
           </motion.h1>
         </div>
 
