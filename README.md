@@ -1,6 +1,6 @@
 <div align="center">
 
-#  ruthvik.tech
+# ruthvik.tech
 
 ### Personal Portfolio — Aspiring AI/ML Engineer & Developer
 
