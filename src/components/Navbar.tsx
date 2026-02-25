@@ -6,10 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const navLinks = [
-  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
+  { label: "Work", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -28,38 +26,34 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-2xl border-b border-card-border"
+          ? "bg-background/90 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-8 md:px-12 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
         {/* Brand */}
-        <a
-          href="#"
-          className="text-sm font-bold tracking-tight text-foreground hover:text-accent transition-colors duration-500"
-        >
-          RUTHVIK<span className="text-accent">.</span>
+        <a href="#" className="flex items-center gap-1.5">
+          <span className="text-sm font-bold tracking-tight text-foreground">
+            PORTFOLIO,
+          </span>
+          <span className="text-sm font-normal tracking-tight text-muted">
+            RUTHVIK
+          </span>
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[11px] tracking-[0.2em] uppercase text-muted hover:text-foreground transition-colors duration-500"
+              className="text-sm tracking-wide text-foreground hover:text-accent link-hover transition-colors duration-300"
             >
-              {link.label}
+              {link.label.toUpperCase()}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="text-[11px] tracking-[0.2em] uppercase px-5 py-2 border border-foreground/[0.15] rounded-full text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
-          >
-            Let&apos;s Talk
-          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -70,15 +64,15 @@ export default function Navbar() {
         >
           <motion.span
             animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="block w-5 h-px bg-foreground"
+            className="block w-5 h-[1.5px] bg-foreground"
           />
           <motion.span
             animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="block w-5 h-px bg-foreground"
+            className="block w-5 h-[1.5px] bg-foreground"
           />
           <motion.span
             animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="block w-5 h-px bg-foreground"
+            className="block w-5 h-[1.5px] bg-foreground"
           />
         </button>
       </div>
@@ -91,15 +85,15 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease }}
-            className="md:hidden bg-background/95 backdrop-blur-2xl border-b border-card-border overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-xl overflow-hidden"
           >
-            <div className="px-8 py-6 space-y-4">
+            <div className="px-6 py-6 space-y-5">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block text-[11px] tracking-[0.2em] uppercase text-muted hover:text-foreground transition-colors duration-500"
+                  className="block text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors duration-300"
                 >
                   {link.label}
                 </a>

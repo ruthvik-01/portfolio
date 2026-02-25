@@ -1,183 +1,247 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { HiLightningBolt, HiAcademicCap, HiCode } from "react-icons/hi";
 
-const projectsData = [
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const skills = [
+  "Python",
+  "TensorFlow",
+  "PyTorch",
+  "OpenCV",
+  "Flask",
+  "Docker",
+  "NLP",
+  "YOLOv8",
+  "Streamlit",
+  "Deep Learning",
+  "C++",
+  "Git",
+];
+
+const recentProjects = [
   {
-    num: "01",
     title: "UniPeasy",
     subtitle: "Student Resource Platform",
     description:
-      "A centralized platform to simplify student access to academic information and university resources.",
-    details: [
-      "Built and deployed to centralize university resources and simplify student access to academic information",
-      "Built a Flask server with a unified dashboard for file management, access control, and real-time storage handling",
-    ],
-    tags: ["Flask", "Python", "Dashboard", "File Management"],
+      "A centralized platform to simplify student access to academic information and university resources. Built with Flask, unified dashboard for file management.",
+    tags: ["Flask", "Python", "Dashboard"],
     github: "#",
     live: "#",
-    color: "#7C3AED",
   },
   {
-    num: "02",
     title: "Health Assistant",
     subtitle: "AI-Powered Multi-Modal Chatbot",
     description:
-      "An intelligent WhatsApp health assistant for rural users, supporting text, image, audio, and document queries.",
-    details: [
-      "Engineered an intelligent WhatsApp health assistant using Google Gemini AI and n8n to process text, image, audio, and document queries",
-      "Designed to provide simplified medical guidance for rural users and generate critical health alerts in multiple regional languages",
-    ],
-    tags: ["Google Gemini AI", "n8n", "WhatsApp API", "NLP"],
+      "An intelligent WhatsApp health assistant using Google Gemini AI and n8n — processes text, image, audio, and document queries for rural users.",
+    tags: ["Gemini AI", "n8n", "WhatsApp API"],
     github: "#",
     live: "#",
-    color: "#2563EB",
   },
   {
-    num: "03",
     title: "Brain Tumor Detection",
     subtitle: "YOLO & Streamlit",
     description:
-      "A real-time brain tumor detection system using pre-trained YOLO model on MRI images.",
-    details: [
-      "Used a pre-trained YOLO model to detect brain tumors in MRI images",
-      "Built a Streamlit UI for image upload and real-time predictions",
-      "Applied basic preprocessing for better accuracy and display",
-    ],
-    tags: ["YOLOv8", "Streamlit", "OpenCV", "Deep Learning"],
+      "Real-time brain tumor detection system using pre-trained YOLO model on MRI images with a Streamlit UI for image upload and predictions.",
+    tags: ["YOLOv8", "Streamlit", "OpenCV"],
     github: "#",
     live: "#",
-    color: "#059669",
+  },
+];
+
+const academicProjects = [
+  {
+    icon: HiLightningBolt,
+    name: "24-Hour Hackathon",
+    category: "VR Engineering College",
+  },
+  {
+    icon: HiLightningBolt,
+    name: "Smart India Hackathon",
+    category: "National Level · 2025",
+  },
+  {
+    icon: HiLightningBolt,
+    name: "Codegnan Hackathon",
+    category: "2026",
+  },
+  {
+    icon: HiAcademicCap,
+    name: "Python Foundation Certification",
+    category: "Infosys Springboard",
+  },
+  {
+    icon: HiAcademicCap,
+    name: "Database Management Systems",
+    category: "Infosys Springboard",
+  },
+  {
+    icon: HiCode,
+    name: "C & C++ Programming",
+    category: "Spoken Tutorial – IIT Bombay",
+  },
+  {
+    icon: HiAcademicCap,
+    name: "Cyber Security",
+    category: "NPTEL",
   },
 ];
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeSkill, setActiveSkill] = useState(0);
 
   return (
-    <section id="projects" className="py-24 md:py-32 px-6 md:px-8" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <span className="text-xs tracking-widest uppercase text-accent font-medium">
-            Projects
-          </span>
-          <h2
-            className="text-3xl md:text-5xl font-bold mt-3 tracking-tight"
-            style={{ fontFamily: "var(--font-serif), Georgia, serif" }}
+    <section
+      id="work"
+      className="py-28 md:py-40 px-6 md:px-10"
+      ref={ref}
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Section heading */}
+        <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-20 items-start mb-16">
+          <motion.h2
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease }}
+            className="text-5xl md:text-6xl font-black tracking-tight"
           >
-            Things I&apos;ve built
-          </h2>
-        </motion.div>
+            Work
+          </motion.h2>
 
-        <div className="space-y-6">
-          {projectsData.map((project, i) => (
+          {/* Skill pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1, duration: 0.6, ease }}
+            className="flex flex-wrap gap-2"
+          >
+            {skills.map((skill, i) => (
+              <button
+                key={skill}
+                onClick={() => setActiveSkill(i)}
+                className={`pill-tag ${i === activeSkill ? "filled" : ""}`}
+              >
+                {skill}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Most Recents */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.2, duration: 0.6, ease }}
+          className="text-sm tracking-widest uppercase text-foreground/50 mb-8"
+        >
+          Most Recents
+        </motion.p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {recentProjects.map((project, i) => (
             <motion.div
-              key={i}
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15 * i, duration: 0.6 }}
+              transition={{ delay: 0.25 + i * 0.1, duration: 0.6, ease }}
               className="group"
             >
-              <div className="grid lg:grid-cols-2 gap-0 rounded-2xl border border-card-border bg-card-bg overflow-hidden card-shadow card-shadow-hover">
-                {/* Left — Image placeholder */}
-                <div
-                  className="relative h-56 lg:h-auto img-placeholder"
-                  style={{
-                    background: `linear-gradient(135deg, ${project.color}08, ${project.color}15)`,
-                  }}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <span
-                        className="text-7xl font-bold opacity-10"
-                        style={{ color: project.color }}
-                      >
-                        {project.num}
-                      </span>
-                      <p className="text-xs text-muted-light mt-1 opacity-40">
-                        Project preview
-                      </p>
-                    </div>
+              <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] overflow-hidden hover:border-foreground/25 transition-colors duration-300">
+                {/* Image placeholder */}
+                <div className="relative h-48 bg-foreground/[0.04] flex items-center justify-center overflow-hidden">
+                  <div className="text-center">
+                    <span className="text-6xl font-black text-foreground/[0.06] block">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[10px] text-foreground/20 uppercase tracking-widest">
+                      {project.subtitle}
+                    </span>
                   </div>
-                  {/* Replace with: <Image src="/project-img.jpg" alt={project.title} fill className="object-cover" /> */}
                 </div>
 
-                {/* Right — Content */}
-                <div className="p-6 md:p-8 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className="text-xs font-mono px-2.5 py-1 rounded-full font-medium"
-                      style={{
-                        background: `${project.color}10`,
-                        color: project.color,
-                      }}
-                    >
-                      {project.num}
-                    </span>
-                    <span className="text-xs text-muted">{project.subtitle}</span>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-accent transition-colors duration-200">
+                {/* Content */}
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors duration-200">
                     {project.title}
                   </h3>
-
-                  <p className="text-sm text-muted mb-4 leading-relaxed">
+                  <p className="text-sm text-foreground/60 leading-relaxed mb-4">
                     {project.description}
                   </p>
 
-                  <ul className="space-y-1.5 mb-5">
-                    {project.details.map((detail, j) => (
-                      <li
-                        key={j}
-                        className="text-sm text-muted/80 flex items-start gap-2"
-                      >
-                        <span className="text-accent mt-0.5 shrink-0">▸</span>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 mb-5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-3 py-1 rounded-full bg-section-alt text-muted border border-card-border"
+                        className="text-[11px] px-2.5 py-1 rounded-full border border-foreground/10 text-foreground/50"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 pt-3 border-t border-foreground/5">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-sm text-muted hover:text-foreground transition-colors duration-200"
+                      className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
                     >
-                      <FaGithub size={15} />
+                      <FaGithub size={14} />
                       Code
                     </a>
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-sm text-muted hover:text-foreground transition-colors duration-200"
+                      className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
                     >
-                      <FaExternalLinkAlt size={12} />
-                      Live Demo
+                      <FaExternalLinkAlt size={11} />
+                      Live
                     </a>
                   </div>
                 </div>
               </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Academic Projects / Certifications list */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.3, duration: 0.6, ease }}
+          className="text-sm tracking-widest uppercase text-foreground/50 mb-8"
+        >
+          Hackathons &amp; Certifications
+        </motion.p>
+
+        <div className="divide-y divide-foreground/10">
+          {academicProjects.map((item, i) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, x: -15 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.35 + i * 0.05, duration: 0.5, ease }}
+              className="flex items-center gap-4 py-4 group hover:bg-foreground/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-200"
+            >
+              <item.icon
+                size={18}
+                className="text-foreground/30 group-hover:text-accent transition-colors duration-200 shrink-0"
+              />
+              <span className="font-medium text-sm md:text-base">
+                {item.name}
+              </span>
+              <span className="text-foreground/40 text-sm hidden sm:inline">
+                —
+              </span>
+              <span className="text-foreground/40 text-xs sm:text-sm">
+                {item.category}
+              </span>
             </motion.div>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,17 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const dmSerif = DM_Serif_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Ruthvik Pitchika | AI/ML Engineer",
+  title: "Ruthvik Pitchika — AI/ML Engineer",
   description:
-    "Portfolio of Pitchika Ruthvik — Aspiring AI/ML Engineer passionate about building intelligent systems with Python, Machine Learning, and Deep Learning.",
+    "Portfolio of Ruthvik Pitchika — Aspiring AI/ML Engineer building intelligent systems with Python, Machine Learning, and Deep Learning.",
   keywords: [
     "Ruthvik",
     "Pitchika Ruthvik",
@@ -29,9 +22,9 @@ export const metadata: Metadata = {
     "Python",
   ],
   openGraph: {
-    title: "Ruthvik Pitchika | AI/ML Engineer",
+    title: "Ruthvik Pitchika — AI/ML Engineer",
     description:
-      "Aspiring AI/ML Engineer with strong foundations in Python, machine learning, and deep learning.",
+      "Aspiring AI/ML Engineer building intelligent systems.",
     url: "https://ruthvik.tech",
     siteName: "ruthvik.tech",
     type: "website",
@@ -46,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${dmSerif.variable} antialiased bg-background text-foreground`}
+        className={`${inter.variable} antialiased bg-background text-foreground`}
       >
         {children}
       </body>

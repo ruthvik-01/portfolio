@@ -12,110 +12,89 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-32 md:py-40 px-8 md:px-12" ref={ref}>
+    <section
+      id="contact"
+      className="py-28 md:py-40 px-6 md:px-10 bg-dark-bg text-dark-fg"
+      ref={ref}
+    >
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease }}
-          className="mb-6"
-        >
-          <span className="bracket-label">[ Get In Touch ]</span>
-        </motion.div>
+        <div className="flex justify-center mb-12">
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ duration: 0.5, ease }}
+            className="gold-dot"
+          />
+        </div>
 
-        {/* Large CTA headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1, duration: 0.8, ease }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.95]">
-            LET&apos;S BUILD
-            <br />
-            <span className="text-outline">SOMETHING</span>
-            <br />
-            <span className="gradient-text">INTELLIGENT</span>
-          </h2>
-        </motion.div>
-
-        {/* Description + CTA */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.25, duration: 0.8, ease }}
+        <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-20 items-start">
+          {/* Left label */}
+          <motion.h2
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease }}
+            className="text-5xl md:text-6xl font-black tracking-tight"
           >
-            <p className="text-sm text-muted leading-relaxed mb-8 max-w-md">
-              I&apos;m currently looking for internship opportunities in AI/ML
-              and software engineering. Whether you have a project idea, an open
-              position, or just want to connect — I&apos;d love to hear from you.
+            Contact
+          </motion.h2>
+
+          {/* Right content */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.15, duration: 0.8, ease }}
+          >
+            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-medium mb-10">
+              Psst... exciting opportunities, anyone? I&apos;m open to
+              internships, collaborations, and cool AI/ML projects.{" "}
+              <span className="text-accent">
+                Let&apos;s build something intelligent together.
+              </span>
             </p>
+
+            {/* CTA button */}
             <motion.a
               href="mailto:ruthvikp186@gmail.com"
-              whileHover={{ x: 6 }}
-              className="group inline-flex items-center gap-3 text-sm font-semibold text-foreground hover:text-accent transition-colors duration-500"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-dark-fg/30 text-dark-fg font-semibold text-base hover:bg-dark-fg hover:text-dark-bg transition-all duration-300 mb-10"
             >
-              <span className="w-12 h-px bg-accent group-hover:w-20 transition-all duration-500" />
-              ruthvikp186@gmail.com
-              <HiArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform duration-500"
-              />
+              Reach Out
+              <HiArrowRight size={18} />
             </motion.a>
-          </motion.div>
 
-          {/* Social links */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.35, duration: 0.8, ease }}
-            className="space-y-4"
-          >
-            <p className="text-[11px] tracking-[0.2em] uppercase font-mono text-muted mb-6">
-              Follow me
+            <p className="text-sm text-dark-fg/40 mb-8">
+              ruthvikp186@gmail.com
             </p>
-            {[
-              {
-                icon: FaLinkedin,
-                href: "https://linkedin.com/in/ruthvik-pitchika",
-                label: "LinkedIn",
-                handle: "@ruthvik-pitchika",
-              },
-              {
-                icon: FaGithub,
-                href: "https://github.com/ruthvik-pitchika",
-                label: "GitHub",
-                handle: "@ruthvik-pitchika",
-              },
-            ].map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ x: 4 }}
-                className="group flex items-center gap-4 py-4 border-t border-card-border last:border-b"
-              >
-                <social.icon
-                  size={18}
-                  className="text-muted group-hover:text-accent transition-colors duration-500"
-                />
-                <div className="flex-1">
-                  <span className="text-sm font-medium group-hover:text-accent transition-colors duration-500">
-                    {social.label}
-                  </span>
-                  <span className="text-xs text-muted ml-3">
-                    {social.handle}
-                  </span>
-                </div>
-                <HiArrowRight
-                  size={14}
-                  className="text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-500"
-                />
-              </motion.a>
-            ))}
+
+            {/* Social links */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                {
+                  icon: FaLinkedin,
+                  href: "https://linkedin.com/in/ruthvik-pitchika",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: FaGithub,
+                  href: "https://github.com/ruthvik-pitchika",
+                  label: "GitHub",
+                },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-fg/20 text-dark-fg/70 text-sm hover:border-dark-fg/50 hover:text-dark-fg transition-all duration-300"
+                >
+                  <social.icon size={16} />
+                  {social.label}
+                </motion.a>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
