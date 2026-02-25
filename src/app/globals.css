@@ -59,8 +59,8 @@ body {
     90deg,
     transparent,
     transparent 29px,
-    rgba(0, 0, 0, 0.03) 29px,
-    rgba(0, 0, 0, 0.03) 30px
+    rgba(0, 0, 0, 0.04) 29px,
+    rgba(0, 0, 0, 0.04) 30px
   );
   animation: grain-move 20s linear infinite;
   pointer-events: none;

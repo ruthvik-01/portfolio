@@ -5,30 +5,90 @@ import { useRef } from "react";
 import { HiExternalLink, HiOutlineAcademicCap } from "react-icons/hi";
 
 const certifications = [
+  // Python & AI/ML
   {
-    title: "Python for Beginners",
+    title: "Basics of Python",
     issuer: "Infosys Springboard",
-    link: "https://infyspringboard.onwingspan.com",
+    link: "/certifications/basics-of-python.pdf",
   },
   {
     title: "Python Foundation Certification",
     issuer: "Infosys Springboard",
-    link: "https://infyspringboard.onwingspan.com",
+    link: "/certifications/python-foundation.pdf",
   },
+  {
+    title: "Introduction to Artificial Intelligence",
+    issuer: "Infosys Springboard",
+    link: "/certifications/intro-to-ai.pdf",
+  },
+  {
+    title: "Introduction to Deep Learning",
+    issuer: "Infosys Springboard",
+    link: "/certifications/intro-to-deep-learning.pdf",
+  },
+  {
+    title: "Introduction to NLP",
+    issuer: "Infosys Springboard",
+    link: "/certifications/intro-to-nlp.pdf",
+  },
+  // Oracle
+  {
+    title: "Oracle AI Foundations",
+    issuer: "Oracle",
+    link: "/certifications/oracle-ai.pdf",
+  },
+  {
+    title: "Oracle Cloud Infrastructure",
+    issuer: "Oracle",
+    link: "/certifications/oracle-cloud.pdf",
+  },
+  // Frontend
+  {
+    title: "Responsive Web Development (HTML5, CSS3, JS)",
+    issuer: "Infosys Springboard",
+    link: "/certifications/responsive-web-dev.pdf",
+  },
+  {
+    title: "Front End Development Foundation",
+    issuer: "TechA",
+    link: "/certifications/frontend-dev-foundation.pdf",
+  },
+  {
+    title: "Responsive Web Design (HTML, CSS & JS)",
+    issuer: "TechA",
+    link: "/certifications/responsive-web-design.pdf",
+  },
+  // Java
+  {
+    title: "Java Programming Fundamentals",
+    issuer: "Infosys Springboard",
+    link: "/certifications/java-fundamentals.pdf",
+  },
+  {
+    title: "Java Language Features",
+    issuer: "Infosys Springboard",
+    link: "/certifications/java-language-features.pdf",
+  },
+  {
+    title: "Java SE 8 Features",
+    issuer: "Infosys Springboard",
+    link: "/certifications/java-se8-features.pdf",
+  },
+  // Other
   {
     title: "Database Management Systems",
     issuer: "Infosys Springboard",
-    link: "https://infyspringboard.onwingspan.com",
+    link: "/certifications/dbms.pdf",
+  },
+  {
+    title: "Cyber Security & Privacy",
+    issuer: "NPTEL",
+    link: "/certifications/cyber-security.pdf",
   },
   {
     title: "C & C++ Programming",
     issuer: "Spoken Tutorial – IIT Bombay",
-    link: "https://spoken-tutorial.org",
-  },
-  {
-    title: "Cyber Security",
-    issuer: "NPTEL",
-    link: "https://nptel.ac.in",
+    link: "/certifications/cpp.pdf",
   },
 ];
 

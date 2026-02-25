@@ -14,11 +14,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease }}
-          className="mb-10 flex items-center justify-center gap-3"
+          className="mb-10 inline-flex items-center gap-2 px-5 py-2 rounded-full border border-foreground/10 bg-foreground/[0.03]"
         >
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-sm text-muted">Currently</span>
-          <span className="text-sm font-bold text-foreground">
-            Open to Work<span className="text-accent">.</span>
+          <span className="text-sm font-semibold text-foreground">
+            Open to Work
           </span>
         </motion.div>
 
@@ -59,15 +60,21 @@ export default function Hero() {
           <span className="gold-dot" />
         </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8, ease }}
-          className="mt-6 text-lg text-muted"
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="mt-16 flex justify-center"
         >
-          AI/ML Engineer
-        </motion.p>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-5 h-8 rounded-full border-2 border-foreground/20 flex justify-center pt-1.5"
+          >
+            <div className="w-1 h-1.5 rounded-full bg-foreground/30" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

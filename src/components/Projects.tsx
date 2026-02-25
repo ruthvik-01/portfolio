@@ -9,16 +9,13 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const skills = [
   "Python",
-  "TensorFlow",
   "PyTorch",
   "OpenCV",
   "Flask",
   "Docker",
-  "NLP",
   "YOLOv8",
   "Streamlit",
   "Deep Learning",
-  "C++",
   "Git",
 ];
 
@@ -29,8 +26,9 @@ const recentProjects = [
     description:
       "A centralized platform to simplify student access to academic information and university resources. Built with Flask, unified dashboard for file management.",
     tags: ["Flask", "Python", "Dashboard"],
-    github: "#",
-    live: "#",
+    github: "https://github.com/ruthvik-01/unipeasy",
+    live: "https://unipeasy.com",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop",
   },
   {
     title: "Health Assistant",
@@ -39,7 +37,7 @@ const recentProjects = [
       "An intelligent WhatsApp health assistant using Google Gemini AI and n8n — processes text, image, audio, and document queries for rural users.",
     tags: ["Gemini AI", "n8n", "WhatsApp API"],
     github: "#",
-    live: "#",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&fit=crop",
   },
   {
     title: "Brain Tumor Detection",
@@ -48,11 +46,11 @@ const recentProjects = [
       "Real-time brain tumor detection system using pre-trained YOLO model on MRI images with a Streamlit UI for image upload and predictions.",
     tags: ["YOLOv8", "Streamlit", "OpenCV"],
     github: "#",
-    live: "#",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&fit=crop",
   },
 ];
 
-const academicProjects = [
+const hackathons = [
   {
     icon: HiLightningBolt,
     name: "24-Hour Hackathon",
@@ -62,42 +60,79 @@ const academicProjects = [
     icon: HiLightningBolt,
     name: "Smart India Hackathon",
     category: "National Level · 2025",
+    link: "/certifications/sih-participation.pdf",
   },
   {
     icon: HiLightningBolt,
     name: "Codegnan Hackathon",
     category: "2026",
+    link: "/certifications/codegnan-hackathon.pdf",
+  },
+];
+
+const certificationSections = [
+  {
+    label: "Python & AI/ML",
+    items: [
+      { name: "Basics of Python", category: "Infosys Springboard", link: "/certifications/basics-of-python.pdf" },
+      { name: "Python Foundation Certification", category: "Infosys Springboard", link: "/certifications/python-foundation.pdf" },
+      { name: "Introduction to Artificial Intelligence", category: "Infosys Springboard", link: "/certifications/intro-to-ai.pdf" },
+      { name: "Introduction to Deep Learning", category: "Infosys Springboard", link: "/certifications/intro-to-deep-learning.pdf" },
+      { name: "Introduction to NLP", category: "Infosys Springboard", link: "/certifications/intro-to-nlp.pdf" },
+    ],
   },
   {
-    icon: HiAcademicCap,
-    name: "Python Foundation Certification",
-    category: "Infosys Springboard",
+    label: "Oracle",
+    items: [
+      { name: "Oracle AI Foundations", category: "Oracle", link: "/certifications/oracle-ai.pdf" },
+      { name: "Oracle Cloud Infrastructure", category: "Oracle", link: "/certifications/oracle-cloud.pdf" },
+    ],
   },
   {
-    icon: HiAcademicCap,
-    name: "Database Management Systems",
-    category: "Infosys Springboard",
+    label: "Frontend",
+    items: [
+      { name: "Responsive Web Development (HTML5, CSS3, JS)", category: "Infosys Springboard", link: "/certifications/responsive-web-dev.pdf" },
+      { name: "Front End Development Foundation", category: "TechA", link: "/certifications/frontend-dev-foundation.pdf" },
+      { name: "Responsive Web Design (HTML, CSS & JS)", category: "TechA", link: "/certifications/responsive-web-design.pdf" },
+    ],
   },
   {
-    icon: HiCode,
-    name: "C & C++ Programming",
-    category: "Spoken Tutorial – IIT Bombay",
+    label: "Java",
+    items: [
+      { name: "Java Programming Fundamentals", category: "Infosys Springboard", link: "/certifications/java-fundamentals.pdf" },
+      { name: "Java Language Features", category: "Infosys Springboard", link: "/certifications/java-language-features.pdf" },
+      { name: "Java SE 8 Features", category: "Infosys Springboard", link: "/certifications/java-se8-features.pdf" },
+    ],
   },
   {
-    icon: HiAcademicCap,
-    name: "Cyber Security",
-    category: "NPTEL",
+    label: "Database",
+    items: [
+      { name: "Database Management Systems", category: "Infosys Springboard", link: "/certifications/dbms.pdf" },
+    ],
+  },
+  {
+    label: "Cyber Security",
+    items: [
+      { name: "Cyber Security & Privacy", category: "NPTEL", link: "/certifications/cyber-security.pdf" },
+    ],
+  },
+  {
+    label: "C/C++",
+    items: [
+      { name: "C & C++ Programming", category: "Spoken Tutorial – IIT Bombay", link: "/certifications/cpp.pdf" },
+    ],
   },
 ];
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeSkill, setActiveSkill] = useState(0);
+  const [activeSkill, setActiveSkill] = useState<number | null>(null);
+  const [activeCertSection, setActiveCertSection] = useState(0);
 
   return (
     <section
-      id="work"
+      id="projects"
       className="py-28 md:py-40 px-6 md:px-10"
       ref={ref}
     >
@@ -110,7 +145,7 @@ export default function Projects() {
             transition={{ duration: 0.8, ease }}
             className="text-5xl md:text-6xl font-black tracking-tight"
           >
-            Work
+            Projects
           </motion.h2>
 
           {/* Skill pills */}
@@ -152,16 +187,14 @@ export default function Projects() {
               className="group"
             >
               <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] overflow-hidden hover:border-foreground/25 transition-colors duration-300">
-                {/* Image placeholder */}
-                <div className="relative h-48 bg-foreground/[0.04] flex items-center justify-center overflow-hidden">
-                  <div className="text-center">
-                    <span className="text-6xl font-black text-foreground/[0.06] block">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-[10px] text-foreground/20 uppercase tracking-widest">
-                      {project.subtitle}
-                    </span>
-                  </div>
+                {/* Project image */}
+                <div className="relative h-48 bg-foreground/[0.04] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
 
                 {/* Content */}
@@ -194,15 +227,17 @@ export default function Projects() {
                       <FaGithub size={14} />
                       Code
                     </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
-                    >
-                      <FaExternalLinkAlt size={11} />
-                      Live
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
+                      >
+                        <FaExternalLinkAlt size={11} />
+                        Live
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -210,38 +245,133 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Academic Projects / Certifications list */}
+        {/* Hackathons */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.3, duration: 0.6, ease }}
           className="text-sm tracking-widest uppercase text-foreground/50 mb-8"
         >
-          Hackathons &amp; Certifications
+          Hackathons
         </motion.p>
 
+        <div className="divide-y divide-foreground/10 mb-20">
+          {hackathons.map((item, i) => {
+            const content = (
+              <>
+                <item.icon
+                  size={18}
+                  className="text-foreground/30 group-hover:text-accent transition-colors duration-200 shrink-0"
+                />
+                <span className="font-medium text-sm md:text-base">
+                  {item.name}
+                </span>
+                <span className="text-foreground/40 text-sm hidden sm:inline">
+                  —
+                </span>
+                <span className="text-foreground/40 text-xs sm:text-sm">
+                  {item.category}
+                </span>
+                {item.link && (
+                  <FaExternalLinkAlt
+                    size={10}
+                    className="ml-auto text-foreground/20 group-hover:text-accent transition-colors duration-200 shrink-0"
+                  />
+                )}
+              </>
+            );
+            return (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, x: -15 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.35 + i * 0.05, duration: 0.5, ease }}
+              >
+                {item.link ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 py-4 group hover:bg-foreground/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-200"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-4 py-4 group hover:bg-foreground/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-200">
+                    {content}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Certifications */}
+        <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-20 items-start mb-10">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.6, ease }}
+            className="text-sm tracking-widest uppercase text-foreground/50"
+          >
+            Certifications
+          </motion.p>
+
+          {/* Category pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.45, duration: 0.6, ease }}
+            className="flex flex-wrap gap-2"
+          >
+            {certificationSections.map((section, i) => (
+              <button
+                key={section.label}
+                onClick={() => setActiveCertSection(i)}
+                className={`pill-tag ${i === activeCertSection ? "filled" : ""}`}
+              >
+                {section.label}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
         <div className="divide-y divide-foreground/10">
-          {academicProjects.map((item, i) => (
+          {certificationSections[activeCertSection].items.map((item, i) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, x: -15 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.35 + i * 0.05, duration: 0.5, ease }}
-              className="flex items-center gap-4 py-4 group hover:bg-foreground/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-200"
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                delay: i * 0.04,
+                duration: 0.4,
+                ease,
+              }}
             >
-              <item.icon
-                size={18}
-                className="text-foreground/30 group-hover:text-accent transition-colors duration-200 shrink-0"
-              />
-              <span className="font-medium text-sm md:text-base">
-                {item.name}
-              </span>
-              <span className="text-foreground/40 text-sm hidden sm:inline">
-                —
-              </span>
-              <span className="text-foreground/40 text-xs sm:text-sm">
-                {item.category}
-              </span>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 py-4 group hover:bg-foreground/[0.02] px-2 -mx-2 rounded-lg transition-colors duration-200"
+              >
+                <HiAcademicCap
+                  size={18}
+                  className="text-foreground/30 group-hover:text-accent transition-colors duration-200 shrink-0"
+                />
+                <span className="font-medium text-sm md:text-base">
+                  {item.name}
+                </span>
+                <span className="text-foreground/40 text-sm hidden sm:inline">
+                  —
+                </span>
+                <span className="text-foreground/40 text-xs sm:text-sm">
+                  {item.category}
+                </span>
+                <FaExternalLinkAlt
+                  size={10}
+                  className="ml-auto text-foreground/20 group-hover:text-accent transition-colors duration-200 shrink-0"
+                />
+              </a>
             </motion.div>
           ))}
         </div>

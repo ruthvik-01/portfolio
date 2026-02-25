@@ -72,12 +72,12 @@ export default function Contact() {
               {[
                 {
                   icon: FaLinkedin,
-                  href: "https://linkedin.com/in/ruthvik-pitchika",
+                  href: "https://www.linkedin.com/in/p-ruthvik",
                   label: "LinkedIn",
                 },
                 {
                   icon: FaGithub,
-                  href: "https://github.com/ruthvik-pitchika",
+                  href: "https://github.com/ruthvik-01",
                   label: "GitHub",
                 },
               ].map((social) => (
@@ -88,7 +88,13 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-fg/20 text-dark-fg/70 text-sm hover:border-dark-fg/50 hover:text-dark-fg transition-all duration-300"
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dark-fg/20 text-dark-fg/70 text-sm transition-all duration-300 ${
+                    social.label === "LinkedIn"
+                      ? "hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white"
+                      : social.label === "GitHub"
+                        ? "hover:bg-white hover:border-white hover:text-[#111]"
+                        : "hover:border-dark-fg/50 hover:text-dark-fg"
+                  }`}
                 >
                   <social.icon size={16} />
                   {social.label}

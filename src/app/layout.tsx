@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     siteName: "ruthvik.tech",
     type: "website",
   },
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
