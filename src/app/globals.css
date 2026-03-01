@@ -71,6 +71,22 @@ body {
   100% { transform: translateX(30px) translateY(-60px); }
 }
 
+/* Scrolling tech icon marquee */
+@keyframes marquee-icons {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+@keyframes marquee-icons-reverse {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-icons {
+  animation: marquee-icons 10s linear infinite;
+}
+.animate-marquee-icons-reverse {
+  animation: marquee-icons-reverse 35s linear infinite;
+}
+
 /* Gold dot accent */
 .gold-dot {
   width: 16px;

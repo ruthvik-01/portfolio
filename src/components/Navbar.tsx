@@ -57,7 +57,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <button
+        {/* <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
@@ -74,7 +74,7 @@ export default function Navbar() {
             animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
             className="block w-5 h-[1.5px] bg-foreground"
           />
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile menu */}

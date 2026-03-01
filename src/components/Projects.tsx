@@ -2,24 +2,43 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaPython, FaDocker, FaGitAlt, FaFlask } from "react-icons/fa";
+import { SiPytorch, SiOpencv, SiStreamlit, SiTensorflow, SiJupyter, SiGooglecolab, SiMediapipe } from "react-icons/si";
 import { HiLightningBolt, HiAcademicCap, HiCode } from "react-icons/hi";
+import { TbBrain } from "react-icons/tb";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const skills = [
-  "Python",
-  "PyTorch",
-  "OpenCV",
-  "Flask",
-  "Docker",
-  "YOLOv8",
-  "Streamlit",
-  "Deep Learning",
-  "Git",
+const techIcons = [
+  { icon: FaPython, label: "Python", color: "#3776AB" },
+  { icon: SiPytorch, label: "PyTorch", color: "#EE4C2C" },
+  { icon: SiOpencv, label: "OpenCV", color: "#5C3EE8" },
+  { icon: FaFlask, label: "Flask", color: "#000000" },
+  { icon: FaDocker, label: "Docker", color: "#2496ED" },
+  { icon: FaGitAlt, label: "Git", color: "#F05032" },
+  { icon: SiTensorflow, label: "TensorFlow", color: "#FF6F00" },
+  { icon: SiStreamlit, label: "Streamlit", color: "#FF4B4B" },
+  { icon: SiJupyter, label: "Jupyter", color: "#F37626" },
+  { icon: SiGooglecolab, label: "Google Colab", color: "#F9AB00" },
+  { icon: SiMediapipe, label: "MediaPipe", color: "#00B4D8" },
+  { icon: HiLightningBolt, label: "Lightning", color: "#FFD700" },
+  { icon: HiAcademicCap, label: "Education", color: "#4CAF50" },
+  { icon: HiCode, label: "Coding", color: "#3F51B5" },
+  { icon: TbBrain, label: "AI", color: "#8E44AD" },
+  { icon: FaExternalLinkAlt, label: "External", color: "#3498DB" },
+  { icon: FaGithub, label: "GitHub", color: "#181717" },
 ];
 
 const recentProjects = [
+  {
+    title: "Auralis",
+    subtitle: "Music Player for LG webOS TV",
+    description:
+      "A Spotify-inspired music streaming app built for LG Smart TVs using vanilla HTML, CSS, and JavaScript. Streams music via external APIs, fully optimized for TV navigation with D-Pad remote and LG Magic Remote pointer support.",
+    tags: ["webOS", "HTML/CSS/JS", "HTML5 Audio API", "localStorage"],
+    github: "https://github.com/ruthvik-01/Auralis",
+    image: "/auralis-icon.svg",
+  },
   {
     title: "UniPeasy",
     subtitle: "Student Resource Platform",
@@ -127,55 +146,39 @@ const certificationSections = [
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeSkill, setActiveSkill] = useState<number | null>(null);
   const [activeCertSection, setActiveCertSection] = useState(0);
 
   return (
     <section
       id="projects"
-      className="py-28 md:py-40 px-6 md:px-10"
+      className="relative px-6 md:px-10 overflow-hidden"
       ref={ref}
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Section heading */}
-        <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-20 items-start mb-16">
-          <motion.h2
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease }}
-            className="text-5xl md:text-6xl font-black tracking-tight"
-          >
-            Projects
-          </motion.h2>
-
-          {/* Skill pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6, ease }}
-            className="flex flex-wrap gap-2"
-          >
-            {skills.map((skill, i) => (
-              <button
-                key={skill}
-                onClick={() => setActiveSkill(i)}
-                className={`pill-tag ${i === activeSkill ? "filled" : ""}`}
-              >
-                {skill}
-              </button>
+      {/* Hero banner with scrolling icons */}
+      <div className="relative overflow-hidden mb-8 py-12 md:py-20 text-center">
+        {/* Scrolling icons row */}
+        <div className="pointer-events-none mb-10">
+          <div className="flex items-center gap-10 md:gap-14 animate-marquee-icons whitespace-nowrap">
+            {[...techIcons, ...techIcons, ...techIcons].map((item, i) => (
+              <div key={i} className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-foreground/5 flex items-center justify-center">
+                <item.icon className="w-8 h-8 md:w-10 md:h-10" style={{ color: item.color }} />
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Most Recents */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.2, duration: 0.6, ease }}
-          className="text-sm tracking-widest uppercase text-foreground/50 mb-8"
+        {/* RECENT WORK large heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease }}
+          className="text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight uppercase"
         >
-          Most Recents
-        </motion.p>
+          Recent Work
+        </motion.h2>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto pb-28 md:pb-40">
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {recentProjects.map((project, i) => (
@@ -184,21 +187,21 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.25 + i * 0.1, duration: 0.6, ease }}
-              className="group"
+              className="group h-full"
             >
-              <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] overflow-hidden hover:border-foreground/25 transition-colors duration-300">
+              <div className="h-full flex flex-col rounded-2xl border border-foreground/10 bg-foreground/[0.02] overflow-hidden hover:border-foreground/25 transition-colors duration-300">
                 {/* Project image */}
-                <div className="relative h-48 bg-foreground/[0.04] overflow-hidden">
+                <div className={`relative h-48 overflow-hidden ${project.image.endsWith('.svg') ? 'bg-black flex items-center justify-center' : 'bg-foreground/[0.04]'}`}>
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`transition-transform duration-500 group-hover:scale-105 ${project.image.endsWith('.svg') ? 'w-20 h-20 object-contain' : 'w-full h-full object-cover'}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  {!project.image.endsWith('.svg') && <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />}
                 </div>
 
                 {/* Content */}
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-1">
                   <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors duration-200">
                     {project.title}
                   </h3>
@@ -217,7 +220,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4 pt-3 border-t border-foreground/5">
+                  <div className="flex items-center gap-4 pt-3 border-t border-foreground/5 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
