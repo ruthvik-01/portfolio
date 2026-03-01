@@ -67,6 +67,15 @@ const recentProjects = [
     github: "#",
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&fit=crop",
   },
+  {
+    title: "Smart Ambulance Routing",
+    subtitle: "AI-Powered Emergency Response System",
+    description:
+      "Designed and built an AI-powered Smart Ambulance Routing system that optimizes emergency response through real-time SOS tracking, nearest-driver dispatch, and hospital readiness scoring.",
+    tags: ["Flask", "Socket.IO", "SQLite", "Python"],
+    github: "https://github.com/ruthvik-01",
+    image: "https://images.unsplash.com/photo-1516841273335-e39b37888115?w=800&q=80&fit=crop",
+  },
 ];
 
 const hackathons = [
