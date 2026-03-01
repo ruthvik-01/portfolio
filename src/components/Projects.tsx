@@ -55,7 +55,6 @@ const recentProjects = [
     description:
       "An intelligent WhatsApp health assistant using Google Gemini AI and n8n — processes text, image, audio, and document queries for rural users.",
     tags: ["Gemini AI", "n8n", "WhatsApp API"],
-    github: "#",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&fit=crop",
   },
   {
@@ -64,7 +63,6 @@ const recentProjects = [
     description:
       "Real-time brain tumor detection system using pre-trained YOLO model on MRI images with a Streamlit UI for image upload and predictions.",
     tags: ["YOLOv8", "Streamlit", "OpenCV"],
-    github: "#",
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&fit=crop",
   },
   {
@@ -73,7 +71,7 @@ const recentProjects = [
     description:
       "Designed and built an AI-powered Smart Ambulance Routing system that optimizes emergency response through real-time SOS tracking, nearest-driver dispatch, and hospital readiness scoring.",
     tags: ["Flask", "Socket.IO", "SQLite", "Python"],
-    github: "https://github.com/ruthvik-01",
+    github: "https://github.com/ruthvik-01/Emergency-Routing",
     image: "https://images.unsplash.com/photo-1516841273335-e39b37888115?w=800&q=80&fit=crop",
   },
 ];
