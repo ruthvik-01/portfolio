@@ -34,7 +34,7 @@ const recentProjects = [
     title: "Auralis",
     subtitle: "Music Player · webOS TV & Android",
     description:
-      "A cross-platform music player shipped in two flavours. The webOS build (.ipk) is a Spotify-inspired streaming app for LG Smart TVs, optimized for D-Pad and LG Magic Remote. The Android build (.apk) is an extension-powered player built with Kotlin — featuring cloud playlist sync, Sound Capsule listening analytics, Firebase auth, and a plugin system for any music source.",
+      "A music player built for two worlds — LG Smart TVs (.ipk) and Android (.apk). Kotlin-powered with Firebase auth, cloud playlist sync, Sound Capsule analytics, and an extensible plugin system.",
     tags: ["Kotlin", "Firebase", "webOS", "HTML/CSS/JS", "Cloud Sync", "Plugin System"],
     links: [
       { label: "webOS (.ipk)", url: "https://github.com/ruthvik-01/Auralis-ipk" },
