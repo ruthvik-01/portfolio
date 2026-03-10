@@ -32,11 +32,20 @@ const techIcons = [
 const recentProjects = [
   {
     title: "Auralis",
-    subtitle: "Music Player for LG webOS TV",
+    subtitle: "Music Player for LG webOS TV · .ipk",
     description:
       "A Spotify-inspired music streaming app built for LG Smart TVs using vanilla HTML, CSS, and JavaScript. Streams music via external APIs, fully optimized for TV navigation with D-Pad remote and LG Magic Remote pointer support.",
     tags: ["webOS", "HTML/CSS/JS", "HTML5 Audio API", "localStorage"],
-    github: "https://github.com/ruthvik-01/Auralis",
+    github: "https://github.com/ruthvik-01/Auralis-ipk",
+    image: "/auralis-icon.svg",
+  },
+  {
+    title: "Auralis",
+    subtitle: "Android Music Player · .apk",
+    description:
+      "A beautiful, extension-powered Android music player built with Kotlin — featuring cloud playlist sync, Sound Capsule listening analytics, Firebase auth, and a plugin system for any music source.",
+    tags: ["Kotlin", "Firebase", "Cloud Sync", "Plugin System", "Android"],
+    github: "https://github.com/ruthvik-01/Auralis-apk",
     image: "/auralis-icon.svg",
   },
   {
