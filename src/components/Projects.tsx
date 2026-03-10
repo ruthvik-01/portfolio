@@ -32,20 +32,14 @@ const techIcons = [
 const recentProjects = [
   {
     title: "Auralis",
-    subtitle: "Music Player for LG webOS TV · .ipk",
+    subtitle: "Music Player · webOS TV & Android",
     description:
-      "A Spotify-inspired music streaming app built for LG Smart TVs using vanilla HTML, CSS, and JavaScript. Streams music via external APIs, fully optimized for TV navigation with D-Pad remote and LG Magic Remote pointer support.",
-    tags: ["webOS", "HTML/CSS/JS", "HTML5 Audio API", "localStorage"],
-    github: "https://github.com/ruthvik-01/Auralis-ipk",
-    image: "/auralis-icon.svg",
-  },
-  {
-    title: "Auralis",
-    subtitle: "Android Music Player · .apk",
-    description:
-      "A beautiful, extension-powered Android music player built with Kotlin — featuring cloud playlist sync, Sound Capsule listening analytics, Firebase auth, and a plugin system for any music source.",
-    tags: ["Kotlin", "Firebase", "Cloud Sync", "Plugin System", "Android"],
-    github: "https://github.com/ruthvik-01/Auralis-apk",
+      "A cross-platform music player shipped in two flavours. The webOS build (.ipk) is a Spotify-inspired streaming app for LG Smart TVs, optimized for D-Pad and LG Magic Remote. The Android build (.apk) is an extension-powered player built with Kotlin — featuring cloud playlist sync, Sound Capsule listening analytics, Firebase auth, and a plugin system for any music source.",
+    tags: ["Kotlin", "Firebase", "webOS", "HTML/CSS/JS", "Cloud Sync", "Plugin System"],
+    links: [
+      { label: "webOS (.ipk)", url: "https://github.com/ruthvik-01/Auralis-ipk" },
+      { label: "Android (.apk)", url: "https://github.com/ruthvik-01/Auralis-apk" },
+    ],
     image: "/auralis-icon.svg",
   },
   {
@@ -237,25 +231,44 @@ export default function Projects() {
                   </div>
 
                   <div className="flex items-center gap-4 pt-3 border-t border-foreground/5 mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
-                    >
-                      <FaGithub size={14} />
-                      Code
-                    </a>
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
-                      >
-                        <FaExternalLinkAlt size={11} />
-                        Live
-                      </a>
+                    {project.links ? (
+                      project.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
+                        >
+                          <FaGithub size={14} />
+                          {link.label}
+                        </a>
+                      ))
+                    ) : (
+                      <>
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
+                          >
+                            <FaGithub size={14} />
+                            Code
+                          </a>
+                        )}
+                        {project.live && (
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground transition-colors duration-200"
+                          >
+                            <FaExternalLinkAlt size={11} />
+                            Live
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
