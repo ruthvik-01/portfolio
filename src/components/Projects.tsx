@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { FaGithub, FaExternalLinkAlt, FaPython, FaDocker, FaGitAlt, FaFlask } from "react-icons/fa";
-import { SiPytorch, SiOpencv, SiStreamlit, SiTensorflow, SiJupyter, SiGooglecolab, SiMediapipe } from "react-icons/si";
+import { SiPytorch, SiOpencv, SiStreamlit, SiTensorflow, SiJupyter, SiGooglecolab, SiMediapipe, SiNodedotjs, SiVercel } from "react-icons/si";
 import { HiLightningBolt, HiAcademicCap, HiCode } from "react-icons/hi";
 import { TbBrain } from "react-icons/tb";
 
@@ -21,6 +21,8 @@ const techIcons = [
   { icon: SiJupyter, label: "Jupyter", color: "#F37626" },
   { icon: SiGooglecolab, label: "Google Colab", color: "#F9AB00" },
   { icon: SiMediapipe, label: "MediaPipe", color: "#00B4D8" },
+  { icon: SiNodedotjs, label: "Node.js", color: "#339933" },
+  { icon: SiVercel, label: "Vercel", color: "#ffffff" },
   { icon: HiLightningBolt, label: "Lightning", color: "#FFD700" },
   { icon: HiAcademicCap, label: "Education", color: "#4CAF50" },
   { icon: HiCode, label: "Coding", color: "#3F51B5" },
@@ -30,6 +32,15 @@ const techIcons = [
 ];
 
 const recentProjects = [
+  {
+    title: "ChatForge",
+    subtitle: "AI Dev Server · WhatsApp-Controlled",
+    description:
+      "A WhatsApp-controlled AI developer server that generates, builds, and deploys full-stack web apps from plain-English messages using NVIDIA AI — no IDE, no terminal required.",
+    tags: ["Node.js", "Docker", "NVIDIA AI", "Vercel", "GitHub API", "AES-256-GCM"],
+    github: "https://github.com/ruthvik-01/ChatForge",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80&fit=crop",
+  },
   {
     title: "Auralis",
     subtitle: "Music Player · webOS TV & Android",
